@@ -7,7 +7,9 @@ from selenium.webdriver.common.by import By
 
 class TestTouchAction:
     def setup(self):
-        # 初始化webdriver时要加上这个option参数，具体原因不详
+        # 初始化webdriver时要加上这个option参数
+        # chromedriver都会默认把W3C协议设置为true
+        # 而TouchAction这种鼠标操作本质是不符合W3C标准协议的操作
         option = webdriver.ChromeOptions()
         option.add_experimental_option("w3c", False)
         self.driver = webdriver.Chrome(options=option)
